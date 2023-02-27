@@ -1,14 +1,11 @@
 <script setup>
-  import {toRefs } from 'vue'
   import { RouterLink } from 'vue-router';
 
-  const props = defineProps({
+  defineProps({
     image:String,
     title: String,
     subTitle: String
   })
-
-  const { image, title, subTitle } = toRefs(props)
 </script>
 
 <template>
@@ -24,5 +21,5 @@
       <div class="text-gray-400 pt-1 pb-3 text-[14px]"> {{ subTitle }}</div>
     </div>
   </RouterLink>
- 
+
 </template>

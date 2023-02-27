@@ -8,6 +8,20 @@
   import ClockTimeThreeOutLine from 'vue-material-design-icons/ClockTimeThreeOutline.vue'
 
   import artist from '../artist.json'
+
+  import { useSongStore } from '../stores/song'
+  import { storeToRefs } from 'pinia'
+  const useSong = useSongStore()
+  const { isPlaying, audio, currentTrack, currentArtist } = storeToRefs(useSong)
+
+  const playFunc = () => {
+    console.log(isPlaying, audio, currentTrack, currentArtist, 'playFunc')
+    if (currentTrack.value) {
+     useSong.playOrPauseThisSong(currentArtist.value, currentTrack.value)
+     return
+    }
+    useSong.playFromFirst()
+  }
 </script>
 
 <template>
@@ -51,18 +65,19 @@
           class="
             absolute flex gap-4 items-center justify-start bottom-0 mb-1.5
           "
-        > 
+        >
           <button
             type="button"
             class="p-1 rounded-full bg-white"
+            @click="playFunc()"
           >
             <Play
-              v-if="true"
+              v-if="!isPlaying"
               fillColor="#181818"
               :size="25"
             />
-            <Play
-              v-else       
+            <Pa
+              v-else
               fillColor="#181818"
               :size="25"
             />
@@ -93,12 +108,12 @@
     </div>
 
     <div class="mt-6"> </div>
-    <div class="flex items-center justify-between px-5 pt-2"> 
-      <div class="flex items-center justify-between text-gray-400"> 
+    <div class="flex items-center justify-between px-5 pt-2">
+      <div class="flex items-center justify-between text-gray-400">
         <div class="mr-7">#</div>
         <div class="text-sm">Title</div>
       </div>
-      <div> 
+      <div>
         <ClockTimeThreeOutLine
           fillColor="#FFFFFF"
           :size="18"
@@ -110,16 +125,16 @@
 
     <div class="mb-4"></div>
 
-    <ul 
+    <ul
       class="w-full text-white"
       v-for="(track, index) in artist.tracks"
       :key="track"
-    > 
+    >
       <song-row
         :artist="artist"
         :track="track"
         :index="++index"
-      />    
+      />
     </ul>
   </div>
 </template>

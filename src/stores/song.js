@@ -20,7 +20,7 @@ export const useSongStore = defineStore("song", {
       }
 
       this.audio = new Audio();
-
+      console.log(this.audio, 'this.audio')
       this.audio.src = track.path;
 
       setTimeout(() => {
@@ -59,7 +59,7 @@ export const useSongStore = defineStore("song", {
     },
     playFromFirst() {
       this.resetState()
-      let track = artist.track[0]
+      let track = artist.tracks[0]
       this.loadSong(artist, track);
     },
     resetState() {
@@ -69,4 +69,5 @@ export const useSongStore = defineStore("song", {
       this.currentArtist = null
     }
   },
+  persist: true
 });

@@ -28,7 +28,7 @@ watchEffect(() => {
 const isHover = () => {
   if (icon.value === iconString.value + '-active') return
   if (icon.value === iconString.value + '-inactive') {
-    icon.value = iconString.value + '-inactive-hover' 
+    icon.value = iconString.value + '-inactive-hover'
     textIsHover.value = true
   } else {
     icon.value = iconString.value + '-inactive'
@@ -44,6 +44,7 @@ const isHover = () => {
     @mouseleave="isHover()"
   >
     <img
+      alt=""
       :width="iconSize"
       :src="`/images/icons/${icon}.png`"
     >
@@ -59,5 +60,5 @@ const isHover = () => {
 
     </div>
   </li>
-  
+
 </template>

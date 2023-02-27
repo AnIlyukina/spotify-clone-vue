@@ -4,13 +4,10 @@
 
   import uniqolor from 'uniqolor'
 
-  const props = defineProps({
+  defineProps({
     category:String,
     image:String,
   })
-
-  const { category } = toRefs(props)
-
 
   let randColor = ref('')
   randColor.value = uniqolor.random()
@@ -26,8 +23,8 @@
       class="
         contract-[2]
         brightness-[0.87]
-        rounded-xl 
-        aspect-square 
+        rounded-xl
+        aspect-square
         relative
         overflow-hidden
       "
@@ -47,7 +44,5 @@
         :src="image || ''"
       >
     </div>
-    
   </RouterLink>
- 
 </template>

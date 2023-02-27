@@ -11,7 +11,7 @@
 
   import { storeToRefs } from 'pinia'
   const useSong = useSongStore()
-  const { isPlaying, audio, currentTrack, currentArtist } = storeToRefs(useSong)
+  const { isPlaying, currentTrack } = storeToRefs(useSong)
 
 
   let isHover=ref(false)
@@ -23,7 +23,7 @@
     index: Number
   })
 
-  const { track, artist, index } = toRefs(props)
+  const { track } = toRefs(props)
 
   onMounted(() => {
     const audio = new Audio(track.value.path)
@@ -45,27 +45,27 @@
     <div class="flex item-center w-full py-1.5">
       <div
         v-if="isHover"
-        class="w-[40px] ml-[14px] mr-[6px] cursor-pointer"> 
+        class="w-[40px] ml-[14px] mr-[6px] cursor-pointer">
         <Play
           v-if="!isPlaying"
           fillColor="#FFFFFF"
-          :size="25"  
+          :size="25"
           @click="useSong.playOrPauseThisSong(artist, track)"
         />
         <Play
           v-else-if="isPlaying && currentTrack.name !== track.name"
           fillColor="#FFFFFF"
-          :size="25"  
+          :size="25"
           @click="useSong.loadSong(artist, track)"
         />
         <Pause
           v-else
           fillColor="#FFFFFF"
-          :size="25" 
-          @click="useSong.playOrPauseSong()" 
+          :size="25"
+          @click="useSong.playOrPauseSong()"
         />
       </div>
-      <div 
+      <div
         v-else
         class="text-white font-semibold w-[40px] ml-5"
       >
@@ -76,10 +76,10 @@
 
       <div>
         <div
-          :class="{'text-green-500': currentTrack && currentTrack.name === track.name}"
-          class="text-white font-semibold"> 
+          :class="[currentTrack && currentTrack.name === track.name ? 'text-green-500' : 'text-white', 'font-semibold']"
+         >
           {{ track.name }}
-        </div> 
+        </div>
         <div class="text-sm font-semibold"> {{ artist.name }}</div>
 
       </div>
@@ -98,7 +98,7 @@
       <div
         v-if="isTrackTime"
         class="text-xs mx-5 text-gray-400"
-      > 
+      >
         {{ isTrackTime }}
       </div>
 
@@ -106,5 +106,5 @@
 
 
   </li>
-  
+
 </template>

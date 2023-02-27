@@ -4,12 +4,6 @@
 
 <template>
     <div class="p-8">
-    <button
-      type="buttom"
-      class="text-white text-2xl font-semibold hover:underline cursor-pointer"
-    >
-      Podcasts to make you smaster
-    </button>
     <div class="py-1.5"></div>
     <div class="grid xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-6">
       <category-select category="Плейлист дня" image="https://picsum.photos/id/50/300/300"/>
