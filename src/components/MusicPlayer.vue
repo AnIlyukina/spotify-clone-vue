@@ -111,6 +111,7 @@
     >
       <div class="flex items-center ml-4">
         <img
+          alt=""
           class="rounded-sm shadow-2xl"
           width="55"
           :src="currentArtist.albumCover"

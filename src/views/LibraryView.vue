@@ -12,10 +12,9 @@
   import { useSongStore } from '../stores/song'
   import { storeToRefs } from 'pinia'
   const useSong = useSongStore()
-  const { isPlaying, audio, currentTrack, currentArtist } = storeToRefs(useSong)
+  const { isPlaying, currentTrack, currentArtist } = storeToRefs(useSong)
 
-  const playFunc = () => {
-    console.log(isPlaying, audio, currentTrack, currentArtist, 'playFunc')
+  const play = () => {
     if (currentTrack.value) {
      useSong.playOrPauseThisSong(currentArtist.value, currentTrack.value)
      return
@@ -27,7 +26,7 @@
 <template>
     <div class="p-8">
     <button
-      type="buttom"
+      type="button"
       class="text-white text-2xl font-semibold hover:underline cursor-pointer"
     >
       {{ artist.name }}
@@ -35,6 +34,7 @@
     <div class="py-1.5"></div>
     <div class="flex item-center w-full relative h-full">
       <img
+        alt=""
         width="140"
         :src="artist.albumCover"
       >
@@ -69,14 +69,14 @@
           <button
             type="button"
             class="p-1 rounded-full bg-white"
-            @click="playFunc()"
+            @click="play()"
           >
             <Play
               v-if="!isPlaying"
               fillColor="#181818"
               :size="25"
             />
-            <Pa
+            <Pause
               v-else
               fillColor="#181818"
               :size="25"

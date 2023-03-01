@@ -53,7 +53,7 @@
           @click="useSong.playOrPauseThisSong(artist, track)"
         />
         <Play
-          v-else-if="isPlaying && currentTrack.name !== track.name"
+          v-else-if="isPlaying && currentTrack.id !== track.id"
           fillColor="#FFFFFF"
           :size="25"
           @click="useSong.loadSong(artist, track)"
