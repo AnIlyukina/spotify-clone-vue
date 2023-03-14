@@ -1,4 +1,5 @@
 import { defineStore } from 'pinia'
+// @ts-ignore
 import artist from '../artist.json'
 import { ref } from 'vue'
 

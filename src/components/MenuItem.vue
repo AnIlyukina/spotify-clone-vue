@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { ref, toRefs, watchEffect } from 'vue'
 import { useRoute } from 'vue-router'
 
